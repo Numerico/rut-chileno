@@ -26,5 +26,13 @@ class RutTest < Test::Unit::TestCase
         assert rut.digitoCorrecto(mirut['rut']+i)
       end
     end
+    
+    for i in 0..9 do
+      if i!=mirut['dv']
+        assert !rut.digitoCorrecto(mirut['rut']+i.to_s)
+      else
+        assert rut.digitoCorrecto(mirut['rut']+i.to_s)
+      end
+    end
   end
 end
