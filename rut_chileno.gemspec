@@ -8,4 +8,5 @@ Gem::Specification.new do |s|
   s.files = Dir['lib/*']
   s.add_development_dependency 'test/unit'
   s.add_development_dependency 'pry'
+  s.homepage = 'https://github.com/Numerico/rut-chileno'
 end
