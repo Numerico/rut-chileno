@@ -43,13 +43,14 @@ class RUT
   end
 
   def quitarFormato(rut)
-    rut.delete ".", "-"
+    rut=rut.delete "."
+    rut=rut.delete "-"
   end
 
   def validar(texto)
-    texto=quitarFormato(texto)
+    texto=self.quitarFormato(texto)
     return false if texto.size < 2
-    texto.each_byte do |c|
+    texto.split("").each do |c|
       return false if !digitoValido(c)
     end
     invertido=texto.reverse
@@ -57,7 +58,7 @@ class RUT
     cnt=0
     i=1
     j=2
-    for x in 0..texto.size do
+    for x in 1...texto.size do
       if cnt==3
         dtexto=dtexto+"."
         j+=1
@@ -73,9 +74,8 @@ class RUT
     invertido=""
     i=dtexto.size-1
     j=0
-    for x in i...0
-      invertido=invertido+dtexto[x]
-      i-=1
+    (0..i).to_a.reverse.each do |y|
+      invertido=invertido+dtexto[y]
       j+=1
     end
     return digitoCorrecto(texto)
