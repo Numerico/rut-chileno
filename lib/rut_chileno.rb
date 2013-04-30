@@ -1,4 +1,4 @@
-class RUT
+module RUT
 
   def digitoValido(dv)
     ['0','1','2','3','4','5','6','7','8','9','k','K'].include?(dv)
@@ -84,5 +84,7 @@ class RUT
   def formatear
     #TODO
   end
+
+  module_function :digitoValido, :getDigito, :digitoCorrecto, :quitarFormato, :validar
 
 end

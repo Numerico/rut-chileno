@@ -10,8 +10,7 @@ class RutTest < Test::Unit::TestCase
     yaml=YAML.load_file(File.dirname(__FILE__)+'/fixtures.yml')
     mirut=yaml['ok']
     
-    rut=RUT.new
-    assert_equal rut.getDigito(mirut['rut']), mirut['dv']
+    assert_equal RUT::getDigito(mirut['rut']), mirut['dv']
   end
 
   def test_digito_correcto
@@ -19,34 +18,32 @@ class RutTest < Test::Unit::TestCase
     yaml=YAML.load_file(File.dirname(__FILE__)+'/fixtures.yml')
     mirut=yaml['ok']
 
-    rut=RUT.new
     ("a".."z").each do |i|
       if i!=mirut['dv']
-        assert !rut.digitoCorrecto(mirut['rut']+i)
+        assert !RUT::digitoCorrecto(mirut['rut']+i)
       else
-        assert rut.digitoCorrecto(mirut['rut']+i)
+        assert RUT::digitoCorrecto(mirut['rut']+i)
       end
     end
 
     for i in 0..9 do
       if i!=mirut['dv']
-        assert !rut.digitoCorrecto(mirut['rut']+i.to_s)
+        assert !RUT::digitoCorrecto(mirut['rut']+i.to_s)
       else
-        assert rut.digitoCorrecto(mirut['rut']+i.to_s)
+        assert RUT::digitoCorrecto(mirut['rut']+i.to_s)
       end
     end
   end
 
   def test_digito_valido
-    rut=RUT.new
     for i in 0..9 do
-      assert rut.digitoValido i.to_s
+      assert RUT::digitoValido i.to_s
     end
     for i in [*('a'..'z'),*('A'..'Z')] do
-      assert !rut.digitoValido(i) unless i.casecmp('k')
+      assert !RUT::digitoValido(i) unless i.casecmp('k')
     end
-    assert rut.digitoValido('k')
-    assert rut.digitoValido('K')
+    assert RUT::digitoValido('k')
+    assert RUT::digitoValido('K')
   end
 
   def test_valido
@@ -89,9 +86,8 @@ class RutTest < Test::Unit::TestCase
   ruts << lower_right_point_no_hyphen
 
     #TESTS
-    machine=RUT.new
     ruts.each do |r|
-      assert machine.validar(r), r.inspect
+      assert RUT::validar(r), r.inspect
     end
 
   end
