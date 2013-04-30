@@ -1,9 +1,9 @@
 ok:
-  rut: '16605785'
+  rut: '13704563'
   dv: 'k'
 formats:
-  full_points: '16.605.785'
-  left_point: '16.605785'
-  right_point: '16605.785'
-  no_points: '16605785'
+  full_points: '13.704.563'
+  left_point: '13.704563'
+  right_point: '13704.563'
+  no_points: '13704563'
   dv: 'K'
