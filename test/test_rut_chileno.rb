@@ -92,6 +92,17 @@ class RutTest < Test::Unit::TestCase
 
   end
 
+  def test_valid_ruts
+    yaml=YAML.load_file(File.dirname(__FILE__)+'/fixtures.yml')
+    oks=[]
+    oks << yaml['ok2']
+    oks << yaml['ok3']
+    oks << yaml['ok4']
+    oks.each do |ok|
+      assert RUT::validar(ok['rut']+ok['dv']), ok.to_s
+    end
+  end
+
   #TODO
   #def test_quitar_formato
   #def test_formatear
