@@ -39,7 +39,7 @@ module RUT
       return 0 #TODO ?
     end
     dvr=getDigito(rut)
-    dvr==dv.downcase
+    dvr.to_s==dv.downcase
   end
 
   def quitarFormato(rut)
