@@ -1,9 +1,17 @@
+##
+#All functions are just defined statically in this module
 module RUT
 
+  ##
+  #Returns boolean wether the given string is a valid Digito Verificador character or not
   def digitoValido(dv)
     ['0','1','2','3','4','5','6','7','8','9','k','K'].include?(dv)
   end
 
+  ##
+  #Every R.U.T. has a single valid Digito Verificador which is calculated based on its digits
+  #
+  #Given a R.U.T. this function returns its Digito Verificador as a string
   def getDigito(rut)
     dvr='0'
     suma=0
@@ -26,6 +34,10 @@ module RUT
     end
   end
 
+  ##
+  #Given a R.U.T. including its Digito Verificador (whatever the format, i.e. with or without points & hyphens)
+  #
+  #This function returns boolean wether the Digito Verificador matches the R.U.T. or not
   def digitoCorrecto(crut)
     return false if crut.size < 2
     if crut.size > 2
@@ -42,11 +54,15 @@ module RUT
     dvr.to_s==dv.downcase
   end
 
+  ##
+  #Strips a R.U.T. format (points & hyphens)
   def quitarFormato(rut)
     rut=rut.delete "."
     rut=rut.delete "-"
   end
 
+  ##
+  #Given a R.U.T. (whatever the format, i.e. with or without points & hyphens) this method returns boolean wether it is valid or not
   def validar(texto)
     texto=self.quitarFormato(texto)
     return false if texto.size < 2
@@ -81,6 +97,8 @@ module RUT
     return digitoCorrecto(texto)
   end
 
+  ##
+  #This method will give a raw R.U.T. string its proper format adding the right points & hyphens
   def formatear
     #TODO
   end
