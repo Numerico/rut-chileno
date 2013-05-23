@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name  =   'rut_chileno'
-  s.version = '0.4'
-  s.date  = '2013-05-02'
-  s.summary = 'formateo y validacion R.U.T.'
+  s.version = '0.5'
+  s.date  = '2013-05-23'
+  s.summary = 'format & validate chilean R.U.T.'
   s.authors = ["Numerico"]
   s.email = 'webmaster@numerica.cl'
   s.files = Dir['lib/*']
