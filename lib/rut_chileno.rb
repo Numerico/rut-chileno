@@ -101,7 +101,7 @@ module RUT
   #This method will give a raw R.U.T. string its proper format adding the right points & hyphens
   def formatear(raw_rut)
     rut = raw_rut.to_s.delete '.-'
-    if rut.blank?
+    if rut.nil? || rut.empty?
       return rut
     end
     rut_end = rut[rut.length - 1, rut.length]
@@ -112,9 +112,9 @@ module RUT
       rut_init_temp = rut_init_temp[0, rut_init_temp.length - 3]
     end
     rut = rut_init_temp+rut_init+'-'+rut_end
-    return rut
+    return rut.upcase
   end  
 
-  module_function :digitoValido, :getDigito, :digitoCorrecto, :quitarFormato, :validar
+  module_function :digitoValido, :getDigito, :digitoCorrecto, :quitarFormato, :validar, :formatear
 
 end

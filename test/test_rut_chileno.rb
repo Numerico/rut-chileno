@@ -103,8 +103,14 @@ class RutTest < Test::Unit::TestCase
     end
   end
 
+  def test_formatear
+    yaml = YAML.load_file(File.dirname(__FILE__)+'/fixtures.yml')
+    raw = yaml['ok']['rut'] + yaml['ok']['dv']
+    result = yaml['formats']['full_points'] + '-' + yaml['formats']['dv']
+    assert_equal RUT::formatear(raw), result
+  end
+
   #TODO
   #def test_quitar_formato
-  #def test_formatear
 
 end
