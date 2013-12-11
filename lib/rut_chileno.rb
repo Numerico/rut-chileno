@@ -99,9 +99,21 @@ module RUT
 
   ##
   #This method will give a raw R.U.T. string its proper format adding the right points & hyphens
-  def formatear
-    #TODO
-  end
+  def formatear(raw_rut)
+    rut = raw_rut.to_s.delete '.-'
+    if rut.blank?
+      return rut
+    end
+    rut_end = rut[rut.length - 1, rut.length]
+    rut_init_temp = rut[0, rut.length - 1]
+    rut_init = ''
+    while rut_init_temp.length > 3 do
+      rut_init = '.' + rut_init_temp[rut_init_temp.length - 3, rut_init_temp.length] + rut_init
+      rut_init_temp = rut_init_temp[0, rut_init_temp.length - 3]
+    end
+    rut = rut_init_temp+rut_init+'-'+rut_end
+    return rut
+  end  
 
   module_function :digitoValido, :getDigito, :digitoCorrecto, :quitarFormato, :validar
 
