@@ -41,3 +41,10 @@ but let your imagation fly
 based on jQuery library by Joaquin Nuñez
 
 http://joaquinnunez.cl/jQueryRutPlugin/
+
+----------------------------------------
+
+RUT Chileno is *Free Software* licensed under the **Peer Production License**
+
+
+[Licencia de Producción de Pares](https://endefensadelsl.org/ppl_deed_es.html)
